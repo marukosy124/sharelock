@@ -1,0 +1,414 @@
+openapi: 3.0.0
+info:
+  description: "Documentation of the Sharelock Backend API"
+  version: 1.0.0
+  title: Sharelock API
+security:
+  - bearerAuth: []
+paths:
+  /locks:
+    get:
+      tags:
+        - locks
+      summary: Get all locks visible to account
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Lock"
+    post:
+      tags:
+        - locks
+      summary: Add a new lock
+      requestBody:
+        $ref: "#/components/requestBodies/Lock"
+      responses:
+        "422":
+          description: Invalid input
+  /locks/{id}:
+    get:
+      tags:
+        - locks
+      summary: Get a specific lock
+      parameters:
+        - name: id
+          in: path
+          description: Lock Id
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Lock"
+        "401":
+          description: insufficient permission
+        "404":
+          description: not found
+    put:
+      tags:
+        - locks
+      summary: Update an existing lock
+      parameters:
+        - name: id
+          in: path
+          description: Lock Id
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        $ref: "#/components/requestBodies/Lock"
+      responses:
+        "200":
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/Lock"
+        "401":
+          description: insufficient permission
+        "404":
+          description: not found
+    delete:
+      tags:
+        - locks
+      summary: Update an existing lock
+      parameters:
+        - name: id
+          in: path
+          description: Lock Id
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "204":
+            description: successful operation
+        "401":
+          description: insufficient permission
+        "404":
+          description: not found
+  /locks/{lock_id}/lock_accesses:
+    get:
+      tags:
+        - lock_accesses
+      summary: Get all accesses of the lock
+      parameters:
+        - name: lock_id
+          in: path
+          description: Lock Id
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Lock"
+        "401":
+          description: insufficient permission
+        "404":
+          description: not found
+    post:
+      tags:
+        - lock_accesses
+      summary: Add a new access to the lock
+      parameters:
+        - name: lock_id
+          in: path
+          description: Lock Id
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        $ref: "#/components/requestBodies/LockAccess"
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LockAccess"
+        "422":
+          description: Invalid input
+        "401":
+          description: insufficient permission      
+  /locks/{lock_id}/lock_accesses/{id}:
+    get:
+      tags:
+        - lock_accesses
+      summary: Get a specific lock
+      parameters:
+        - name: lock_id
+          in: path
+          description: Lock Id
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: id
+          in: path
+          description: Lock Access Id
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/LockAccess"
+        "401":
+          description: insufficient permission
+        "404":
+          description: not found
+    put:
+      tags:
+        - lock_accesses
+      summary: Update an existing lock
+      parameters:
+        - name: lock_id
+          in: path
+          description: Lock Id
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: id
+          in: path
+          description: Lock Access Id
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        $ref: "#/components/requestBodies/LockAccess"
+      responses:
+        "200":
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/LockAccess"
+        "401":
+          description: insufficient permission
+        "404":
+          description: not found
+    delete:
+      tags:
+        - lock_accesses
+      summary: Update an existing lock
+      parameters:
+        - name: lock_id
+          in: path
+          description: Lock Id
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: id
+          in: path
+          description: Lock Access Id
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "204":
+            description: successful operation
+        "401":
+          description: insufficient permission
+        "404":
+          description: not found
+  /locks/{lock_id}/histories/:
+    get:
+      tags:
+        - lock_histories
+      summary: Get all histories of a lock
+      parameters:
+        - name: lock_id
+          in: path
+          description: Lock Id
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/LockHistory"
+        "401":
+          description: insufficient permission
+  /locks/{lock_id}/histories/{id}:
+    get:
+      tags:
+        - lock_histories
+      summary: Get a history of a lock
+      parameters:
+        - name: lock_id
+          in: path
+          description: Lock Id
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: id
+          in: path
+          description: History Id
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LockHistory"
+        "401":
+          description: insufficient permission
+        "404":
+          description: not found
+    delete:
+      tags:
+        - lock_histories
+      summary: Delete a history of a lock
+      parameters:
+        - name: lock_id
+          in: path
+          description: Lock Id
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: id
+          in: path
+          description: History Id
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "204":
+          description: successful operation
+        "401":
+          description: insufficient permission
+        "404":
+          description: not found
+servers:
+  - url: http://localhost:3000/
+  - url: https://sharelock.herokuapp.com/
+components:
+  securitySchemes:
+    bearerAuth:            # arbitrary name for the security scheme
+      type: http
+      scheme: bearer
+      bearerFormat: JWT    # optional, arbitrary value for documentation purposes
+
+  requestBodies:
+    Lock:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              lock[name]:
+                type: string
+              lock[private_key]:
+                type: string
+      required: true
+    LockAccess:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              lock_acccess[user_email]:
+                type: string
+              lock_access[permission]:
+                $ref: "#/components/schemas/LockAccess/properties/permission"
+              lock_access[expired_at]:
+                type: string
+                format: timestamp
+      required: true
+  schemas:
+    Lock:
+      type: object
+      properties:
+        id:
+          type: integer
+        name: 
+          type: string
+        lock_accesses:
+          type: array
+          items: 
+            $ref: "#/components/schemas/LockAccess"
+    
+    LockAccess:
+      type: object
+      properties:
+        id: 
+          type: integer
+        user: 
+          $ref: "#/components/schemas/User"
+        permission:
+          type: string
+          enum:
+            - owner
+            - manager
+            - user
+        expired_at:
+          type: string
+          format: timestamp
+    
+    LockHistory:
+      type: object
+      properties:
+        id: 
+          type: integer
+        user: 
+          $ref: "#/components/schemas/User"
+        accessed_at:
+          type: string
+          format: timestamp
+    
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        created_at:
+          type: string
+          format: timestamp
+        updated_at:
+          type: string
+          format: timestamp

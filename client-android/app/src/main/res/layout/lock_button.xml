@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    >
+
+    <ImageButton
+        android:id="@+id/lock_button"
+        android:layout_width="270dp"
+        android:layout_height="270dp"
+        android:background="@drawable/lock_button_ring"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/lock_icon"
+        android:layout_width="54dp"
+        android:layout_height="57dp"
+        android:gravity="center_horizontal"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_outline_lock_24"
+        app:layout_constraintBottom_toBottomOf="@+id/lock_button"
+        app:layout_constraintEnd_toEndOf="@+id/lock_button"
+        app:layout_constraintStart_toStartOf="@+id/lock_button"
+        app:layout_constraintTop_toTopOf="@+id/lock_button"
+        app:layout_constraintVertical_bias="0.398" />
+
+    <TextView
+        android:id="@+id/lock_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tap_to_unlock"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/lock_button"
+        app:layout_constraintStart_toStartOf="@+id/lock_button"
+        app:layout_constraintTop_toBottomOf="@+id/lock_icon"
+        app:layout_constraintVertical_bias="0.239" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

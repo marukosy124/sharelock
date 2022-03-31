@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  lock: one
+  user: one
+  accessed_at: 2022-04-02 16:39:52
+
+two:
+  lock: two
+  user: two
+  accessed_at: 2022-04-02 16:39:52

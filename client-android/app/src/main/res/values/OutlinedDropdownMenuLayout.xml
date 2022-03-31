@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="OutlinedDropdownMenuLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        <item name="boxStrokeColor">@color/md_theme_dark_inversePrimary</item>
+        <item name="hintTextColor">@color/md_theme_dark_inversePrimary</item>
+    </style>
+</resources>

@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "jsonwebtoken.swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/kylef/JSONWebToken.swift",
+      "state" : {
+        "branch" : "master",
+        "revision" : "45e5d4a0ff5a538d50b1cc3cb04a9b81f08eb95b"
+      }
+    }
+  ],
+  "version" : 2
+}
