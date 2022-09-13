@@ -4,8 +4,6 @@ Smart lock with dynamic guest access control
 
 Production URL: https://sharelock.herokuapp.com/
 
-[Google Document](https://docs.google.com/document/d/1LHC3xNWisKQSe9QyQR8BQlqQzqRAt9OZ0KBguQ4vZuM/edit)
-
 Click [here](https://www.youtube.com/watch?v=DE4QFslN538) to see the demo. 
 
 ## Project Structure
